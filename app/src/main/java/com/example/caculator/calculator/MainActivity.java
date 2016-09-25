@@ -42,14 +42,16 @@ public class MainActivity extends AppCompatActivity {
         Button button = (Button)v;
         String str = button.getText().toString();
         sign = str;
-        //EditText edit = (EditText)findViewById(R.id.editText);
-        //double grand_total = 0;
         if(sign.equals("\u00B2\u221a")){
             v1 = Math.sqrt(v1);
         }else if(sign.equals("\u215F\u2093")){
             v1 = 1/v1;
         }
-        edit.setText(v1+"");
+        if((v1 % 2 == 0) || (v1 % 2 == 1)){
+            edit.setText((int)v1+"");
+        }else{
+            edit.setText(v1 + "");
+        }
     }
     public void OnCalculate(View v){
         EditText edit = (EditText)findViewById(R.id.editText);
@@ -67,7 +69,12 @@ public class MainActivity extends AppCompatActivity {
         }else if(sign.equals("^")){
             grand_total = Math.pow(v1, v2);
         }
-        edit.setText(grand_total+"");
+        if((grand_total % 2 == 0) || (grand_total % 2 == 1)){
+            edit.setText((int)grand_total+"");
+        }else {
+            edit.setText(grand_total + "");
+        }
+        v1 = 0;
     }
     public void OnDelete(View v){
         EditText edit = (EditText)findViewById(R.id.editText);
